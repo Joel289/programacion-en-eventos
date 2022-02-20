@@ -1,0 +1,28 @@
+C:\Users\Luis Sanguano\OneDrive - Escuela Politécnica Nacional\2021a\PROGRAMACIÓN EVENTOS\P2B\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.dll.config
+C:\Users\Luis Sanguano\OneDrive - Escuela Politécnica Nacional\2021a\PROGRAMACIÓN EVENTOS\P2B\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.dll
+C:\Users\Luis Sanguano\OneDrive - Escuela Politécnica Nacional\2021a\PROGRAMACIÓN EVENTOS\P2B\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.pdb
+C:\Users\Luis Sanguano\OneDrive - Escuela Politécnica Nacional\2021a\PROGRAMACIÓN EVENTOS\P2B\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.csproj.AssemblyReference.cache
+C:\Users\Luis Sanguano\OneDrive - Escuela Politécnica Nacional\2021a\PROGRAMACIÓN EVENTOS\P2B\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.csproj.CoreCompileInputs.cache
+C:\Users\Luis Sanguano\OneDrive - Escuela Politécnica Nacional\2021a\PROGRAMACIÓN EVENTOS\P2B\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.dll
+C:\Users\Luis Sanguano\OneDrive - Escuela Politécnica Nacional\2021a\PROGRAMACIÓN EVENTOS\P2B\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.pdb
+C:\Users\Pc_activa\source\repos\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.dll.config
+C:\Users\Pc_activa\source\repos\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.dll
+C:\Users\Pc_activa\source\repos\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.pdb
+C:\Users\Pc_activa\source\repos\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.csproj.AssemblyReference.cache
+C:\Users\Pc_activa\source\repos\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.csproj.CoreCompileInputs.cache
+C:\Users\Pc_activa\source\repos\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.dll
+C:\Users\Pc_activa\source\repos\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.pdb
+C:\Users\hp\Desktop\joel\proyectobn\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.dll.config
+C:\Users\hp\Desktop\joel\proyectobn\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.dll
+C:\Users\hp\Desktop\joel\proyectobn\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.pdb
+C:\Users\hp\Desktop\joel\proyectobn\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.csproj.AssemblyReference.cache
+C:\Users\hp\Desktop\joel\proyectobn\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.csproj.CoreCompileInputs.cache
+C:\Users\hp\Desktop\joel\proyectobn\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.dll
+C:\Users\hp\Desktop\joel\proyectobn\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.pdb
+C:\Users\hp\Desktop\Proyecto\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.dll.config
+C:\Users\hp\Desktop\Proyecto\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.dll
+C:\Users\hp\Desktop\Proyecto\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\bin\Debug\Base_Datos.pdb
+C:\Users\hp\Desktop\Proyecto\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.csproj.CoreCompileInputs.cache
+C:\Users\hp\Desktop\Proyecto\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.dll
+C:\Users\hp\Desktop\Proyecto\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.pdb
+C:\Users\hp\Desktop\Proyecto\Proyecto v2\proyectobn\Proyecto_2B\Base_Datos\obj\Debug\Base_Datos.csproj.AssemblyReference.cache

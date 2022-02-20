@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Tienda_Musica" Class="Base_AzureDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=kevin-servidor.database.windows.net;Initial Catalog=Tienda_Musica;User ID=kevin" SettingsObjectName="Base_Datos.Properties.Settings" SettingsPropertyName="Tienda_MusicaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.album_venta" Member="album_venta">
+    <Type Name="album_venta">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="portada" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="album_artista_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="precio" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="album_disquera_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="calificacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="album_venta_cancion_album" Member="cancion_album" ThisKey="id" OtherKey="album_id" Type="cancion_album" />
+      <Association Name="album_venta_item_factura" Member="item_factura" ThisKey="id" OtherKey="album_id" Type="item_factura" />
+      <Association Name="album_venta_compras" Member="compras" ThisKey="id" OtherKey="album_id" Type="compras" />
+      <Association Name="artista_album_venta" Member="artista" ThisKey="album_artista_id" OtherKey="id" Type="artista" IsForeignKey="true" />
+      <Association Name="disquera_album_venta" Member="disquera" ThisKey="album_disquera_id" OtherKey="id_disquera" Type="disquera" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.artista" Member="artista">
+    <Type Name="artista">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre_artistico" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="artista_album_venta" Member="album_venta" ThisKey="id" OtherKey="album_artista_id" Type="album_venta" />
+      <Association Name="artista_artista_cancion" Member="artista_cancion" ThisKey="id" OtherKey="artista_id" Type="artista_cancion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.artista_cancion" Member="artista_cancion">
+    <Type Name="artista_cancion">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="artista_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cancion_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="artista_artista_cancion" Member="artista" ThisKey="artista_id" OtherKey="id" Type="artista" IsForeignKey="true" />
+      <Association Name="cancion_artista_cancion" Member="cancion" ThisKey="cancion_id" OtherKey="id_cancion" Type="cancion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cancion" Member="cancion">
+    <Type Name="cancion">
+      <Column Name="id_cancion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="duracion" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="numero_reproducciones" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cancion_genero_musical_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="cancion_artista_cancion" Member="artista_cancion" ThisKey="id_cancion" OtherKey="cancion_id" Type="artista_cancion" />
+      <Association Name="cancion_cancion_album" Member="cancion_album" ThisKey="id_cancion" OtherKey="cancion_id" Type="cancion_album" />
+      <Association Name="genero_musical_cancion" Member="genero_musical" ThisKey="cancion_genero_musical_id" OtherKey="id" Type="genero_musical" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cancion_album" Member="cancion_album">
+    <Type Name="cancion_album">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cancion_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="album_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="album_venta_cancion_album" Member="album_venta" ThisKey="album_id" OtherKey="id" Type="album_venta" IsForeignKey="true" />
+      <Association Name="cancion_cancion_album" Member="cancion" ThisKey="cancion_id" OtherKey="id_cancion" Type="cancion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.disquera" Member="disquera">
+    <Type Name="disquera">
+      <Column Name="id_disquera" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="disquera_album_venta" Member="album_venta" ThisKey="id_disquera" OtherKey="album_disquera_id" Type="album_venta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.factura" Member="factura">
+    <Type Name="factura">
+      <Column Name="id_factura" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="persona_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tienda_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="precio_final" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Association Name="factura_item_factura" Member="item_factura" ThisKey="id_factura" OtherKey="factura_id" Type="item_factura" />
+      <Association Name="persona_factura" Member="persona" ThisKey="persona_id" OtherKey="id_persona" Type="persona" IsForeignKey="true" />
+      <Association Name="tienda_factura" Member="tienda" ThisKey="tienda_id" OtherKey="id_tienda" Type="tienda" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.genero_musical" Member="genero_musical">
+    <Type Name="genero_musical">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="genero_musical_cancion" Member="cancion" ThisKey="id" OtherKey="cancion_genero_musical_id" Type="cancion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.item_factura" Member="item_factura">
+    <Type Name="item_factura">
+      <Column Name="id_item" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="factura_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="album_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="precio_item" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Association Name="album_venta_item_factura" Member="album_venta" ThisKey="album_id" OtherKey="id" Type="album_venta" IsForeignKey="true" />
+      <Association Name="factura_item_factura" Member="factura" ThisKey="factura_id" OtherKey="id_factura" Type="factura" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.persona" Member="persona">
+    <Type Name="persona">
+      <Column Name="id_persona" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="celular" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="persona_factura" Member="factura" ThisKey="id_persona" OtherKey="persona_id" Type="factura" />
+      <Association Name="persona_usuario" Member="usuario" ThisKey="id_persona" OtherKey="usuario_persona_id" Type="usuario" />
+      <Association Name="persona_compras" Member="compras" ThisKey="id_persona" OtherKey="persona_id" Type="compras" />
+    </Type>
+  </Table>
+  <Table Name="dbo.rol" Member="rol">
+    <Type Name="rol">
+      <Column Name="id_rol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="rol_usuario" Member="usuario" ThisKey="id_rol" OtherKey="usuario_rol_id" Type="usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tienda" Member="tienda">
+    <Type Name="tienda">
+      <Column Name="id_tienda" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre_tienda" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion_tienda" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ruc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="tienda_factura" Member="factura" ThisKey="id_tienda" OtherKey="tienda_id" Type="factura" />
+    </Type>
+  </Table>
+  <Table Name="dbo.usuario" Member="usuario">
+    <Type Name="usuario">
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre_usuario" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="contrasenia" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="correo_electronico" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="usuario_rol_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="usuario_persona_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="persona_usuario" Member="persona" ThisKey="usuario_persona_id" OtherKey="id_persona" Type="persona" IsForeignKey="true" />
+      <Association Name="rol_usuario" Member="rol" ThisKey="usuario_rol_id" OtherKey="id_rol" Type="rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.compras" Member="compras">
+    <Type Name="compras">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="persona_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="album_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="album_venta_compras" Member="album_venta" ThisKey="album_id" OtherKey="id" Type="album_venta" IsForeignKey="true" />
+      <Association Name="persona_compras" Member="persona" ThisKey="persona_id" OtherKey="id_persona" Type="persona" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.ingreso_album_venta" Method="ingreso_album_venta">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="portada" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="album_artista_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="precio" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="album_disquera_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_artista" Method="ingreso_artista">
+    <Parameter Name="nombre_artistico" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_artista_cancion" Method="ingreso_artista_cancion">
+    <Parameter Name="artista_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cancion_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_cancion" Method="ingreso_cancion">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="duracion" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="numero_reproducciones" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cancion_genero_musical_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_disquera" Method="ingreso_disquera">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_cancion_album" Method="ingreso_cancion_album">
+    <Parameter Name="cancion_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="album_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_factura" Method="ingreso_factura">
+    <Parameter Name="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="usuario_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tienda_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="precio_final" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_genero_musical" Method="ingreso_genero_musical">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_item_factura" Method="ingreso_item_factura">
+    <Parameter Name="factura_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="album_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="precio_item" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_rol" Method="ingreso_rol">
+    <Parameter Name="tipo" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_persona" Method="ingreso_persona">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="apellido" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="edad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="celular" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_tienda" Method="ingreso_tienda">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ruc" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_usuario" Method="ingreso_usuario">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="contrasenia" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="correo" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="usuario_rol" Type="System.Int32" DbType="Int" />
+    <Parameter Name="persona_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ingreso_compras" Method="ingreso_compras">
+    <Parameter Name="id_persona" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_album" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
